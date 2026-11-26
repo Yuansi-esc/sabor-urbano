@@ -1,0 +1,600 @@
+
+/* ======================================
+   VARIABLES Y CONFIGURACIÓN GENERAL
+====================================== */
+
+:root {
+    --background: #151515;
+    --surface: #202020;
+    --surface-light: #292929;
+    --border: #383838;
+    --primary: #f28c28;
+    --primary-hover: #ffab50;
+    --text: #ffffff;
+    --text-muted: #bbbbbb;
+    --danger: #ff7777;
+    --whatsapp: #25d366;
+    --radius: 14px;
+    --transition: 0.25s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 20px;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--background);
+    color: var(--text);
+    line-height: 1.6;
+}
+
+button,
+input,
+select,
+textarea {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+    outline: 3px solid var(--primary);
+    outline-offset: 4px;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+/* ======================================
+   ENCABEZADO
+====================================== */
+
+header {
+    background-color: var(--surface);
+    text-align: center;
+    padding: 35px 20px;
+    border-bottom: 2px solid var(--primary);
+}
+
+header h1 {
+    font-size: 32px;
+    color: var(--primary);
+    letter-spacing: 3px;
+}
+
+header p {
+    color: #cccccc;
+}
+
+/* ======================================
+   CONTENIDO PRINCIPAL
+====================================== */
+
+main {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 25px 20px;
+}
+
+/* ======================================
+   PORTADA
+====================================== */
+
+.hero {
+    text-align: center;
+    padding: 45px 15px;
+}
+
+.hero-tag {
+    color: var(--primary);
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+
+.hero h2 {
+    font-size: 32px;
+    margin: 10px 0;
+}
+
+.hero p {
+    color: var(--text-muted);
+}
+
+/* ======================================
+   CATEGORÍAS
+====================================== */
+
+.categories {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 35px;
+}
+
+.categories a {
+    text-decoration: none;
+    color: var(--text);
+    background: var(--surface-light);
+    padding: 10px 20px;
+    border-radius: 25px;
+    transition: background-color var(--transition),
+                transform var(--transition);
+}
+
+.categories a:hover {
+    background: var(--primary);
+    color: var(--background);
+    transform: translateY(-2px);
+}
+
+/* ======================================
+   CARRITO
+====================================== */
+
+.cart-section {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 25px;
+    margin-bottom: 50px;
+    scroll-margin-top: 20px;
+}
+
+.cart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.cart-header h2 {
+    font-size: 25px;
+    margin-top: 5px;
+}
+
+.empty-cart {
+    color: #aaaaaa;
+    text-align: center;
+    padding: 25px 10px;
+    background: var(--surface-light);
+    border-radius: 10px;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.cart-item-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.cart-item-info h3 {
+    font-size: 16px;
+    overflow-wrap: anywhere;
+}
+
+.cart-item-info p {
+    color: var(--primary);
+    font-size: 14px;
+}
+
+.cart-item-actions {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+}
+
+.quantity-button {
+    width: 36px;
+    height: 36px;
+    border: none;
+    border-radius: 7px;
+    background: var(--border);
+    color: var(--text);
+    font-size: 19px;
+    transition: background-color var(--transition);
+}
+
+.quantity-button:hover {
+    background: var(--primary);
+    color: var(--background);
+}
+
+.quantity-button:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.quantity-number {
+    min-width: 20px;
+    text-align: center;
+}
+
+.remove-button {
+    border: none;
+    background: transparent;
+    color: var(--danger);
+    font-size: 13px;
+    margin-left: 8px;
+    transition: opacity var(--transition);
+}
+
+.remove-button:hover {
+    opacity: 0.75;
+}
+
+.cart-summary {
+    margin-top: 22px;
+}
+
+.total-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    font-size: 18px;
+    margin-bottom: 18px;
+}
+
+.total-row strong {
+    color: var(--primary);
+    font-size: 24px;
+}
+
+.clear-cart-button {
+    background: transparent;
+    color: var(--danger);
+    border: 1px solid #884444;
+    padding: 8px 12px;
+    border-radius: 7px;
+    transition: background-color var(--transition);
+}
+
+.clear-cart-button:hover {
+    background: #382323;
+}
+
+/* ======================================
+   FORMULARIO DEL PEDIDO
+====================================== */
+
+.checkout-form {
+    border-top: 1px solid var(--border);
+    margin-top: 25px;
+    padding-top: 25px;
+}
+
+.checkout-form h3 {
+    font-size: 21px;
+    margin-bottom: 20px;
+    color: var(--primary);
+}
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 7px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    display: block;
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--surface-light);
+    color: var(--text);
+    outline-offset: 2px;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #999999;
+}
+
+.form-group select {
+    cursor: pointer;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 85px;
+}
+
+.form-group small {
+    display: block;
+    color: var(--text-muted);
+    font-size: 12px;
+    margin-top: 6px;
+}
+
+.checkout-notice {
+    color: var(--text-muted);
+    font-size: 13px;
+    margin: 20px 0;
+    padding: 12px;
+    border-left: 3px solid var(--primary);
+    background: var(--surface-light);
+    border-radius: 5px;
+}
+
+.checkout-status {
+    margin-top: 12px;
+    font-size: 14px;
+    color: var(--text-muted);
+}
+
+/* ======================================
+   BOTÓN DE WHATSAPP
+====================================== */
+
+.checkout-button {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 8px;
+    background: var(--whatsapp);
+    color: #102b19;
+    font-size: 15px;
+    font-weight: bold;
+    transition: background-color var(--transition),
+                transform var(--transition);
+}
+
+.checkout-button:hover:not(:disabled) {
+    background: #1ebe5d;
+    transform: translateY(-2px);
+}
+
+.checkout-button:disabled {
+    background: #555555;
+    color: #bbbbbb;
+    cursor: not-allowed;
+}
+
+/* ======================================
+   SECCIONES DEL MENÚ
+====================================== */
+
+.menu-section {
+    margin-bottom: 50px;
+    scroll-margin-top: 20px;
+}
+
+.menu-section h2 {
+    color: var(--primary);
+    font-size: 26px;
+    margin-bottom: 20px;
+}
+
+/* ======================================
+   CUADRÍCULA DE PRODUCTOS
+====================================== */
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 25px;
+}
+
+/* ======================================
+   TARJETAS DE PRODUCTOS
+====================================== */
+
+.product-card {
+    background: #222222;
+    border-radius: var(--radius);
+    overflow: hidden;
+    border: 1px solid #333333;
+    transition: transform var(--transition),
+                border-color var(--transition);
+}
+
+.product-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+}
+
+.product-info {
+    padding: 18px;
+}
+
+.product-info h3 {
+    font-size: 19px;
+    margin-bottom: 8px;
+}
+
+.product-info p {
+    color: var(--text-muted);
+    font-size: 14px;
+    min-height: 45px;
+}
+
+.price {
+    display: block;
+    color: var(--primary);
+    font-size: 20px;
+    font-weight: bold;
+    margin: 12px 0;
+}
+
+/* ======================================
+   BOTONES DE PRODUCTOS
+====================================== */
+
+.product-info button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background: var(--primary);
+    color: var(--background);
+    font-weight: bold;
+    transition: background-color var(--transition),
+                transform var(--transition);
+}
+
+.product-info button:hover {
+    background: var(--primary-hover);
+    transform: translateY(-2px);
+}
+
+.product-info button:active {
+    transform: scale(0.98);
+}
+
+/* ======================================
+   PIE DE PÁGINA
+====================================== */
+
+footer {
+    background: var(--surface);
+    text-align: center;
+    padding: 25px;
+    color: #999999;
+    margin-top: 40px;
+}
+
+/* ======================================
+   DISEÑO PARA TABLETAS
+====================================== */
+
+@media (max-width: 800px) {
+    .product-grid {
+        gap: 18px;
+    }
+
+    .product-card img {
+        height: 190px;
+    }
+}
+
+/* ======================================
+   DISEÑO PARA CELULARES
+====================================== */
+
+@media (max-width: 650px) {
+    header h1 {
+        font-size: 26px;
+    }
+
+    .hero {
+        padding: 35px 10px;
+    }
+
+    .hero h2 {
+        font-size: 25px;
+    }
+
+    main {
+        padding: 20px 15px;
+    }
+
+    .product-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .product-card img {
+        height: 210px;
+    }
+
+    .cart-section {
+        padding: 18px;
+    }
+
+    .cart-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .cart-item {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .cart-item-actions {
+        width: 100%;
+        flex-wrap: wrap;
+    }
+
+    .remove-button {
+        margin-left: auto;
+    }
+
+    .total-row {
+        font-size: 16px;
+    }
+
+    .total-row strong {
+        font-size: 21px;
+    }
+
+    .categories {
+        gap: 8px;
+    }
+
+    .categories a {
+        padding: 9px 14px;
+        font-size: 14px;
+    }
+}
+
+/* ======================================
+   DISPOSITIVOS TÁCTILES
+====================================== */
+
+@media (hover: hover) and (pointer: fine) {
+    .product-card:hover {
+        transform: translateY(-4px);
+        border-color: var(--primary);
+    }
+}
+
+/* ======================================
+   REDUCIR MOVIMIENTO
+====================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+    }
+}
