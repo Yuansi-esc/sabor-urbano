@@ -1,0 +1,352 @@
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="Descubre el menú de Sabor Urbano y disfruta de nuestras hamburguesas, pizzas y bebidas."
+    >
+
+    <meta name="theme-color" content="#151515">
+
+    <title>Sabor Urbano | Menú Digital</title>
+
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+
+    <header>
+        <h1>SABOR URBANO</h1>
+        <p>El sabor que merece tu día</p>
+    </header>
+
+    <main>
+
+        <!-- PORTADA -->
+        <section class="hero">
+            <span class="hero-tag">MENÚ DIGITAL</span>
+            <h2>Descubre nuestro menú</h2>
+            <p>
+                Preparamos cada plato con ingredientes
+                de calidad para ofrecerte una gran experiencia.
+            </p>
+        </section>
+
+        <!-- CATEGORÍAS -->
+        <nav class="categories" aria-label="Categorías del menú">
+            <a href="#hamburguesas">Hamburguesas</a>
+            <a href="#pizzas">Pizzas</a>
+            <a href="#bebidas">Bebidas</a>
+            <a href="#carrito">
+                Mi carrito (<span id="cart-count">0</span>)
+            </a>
+        </nav>
+
+        <!-- CARRITO -->
+        <section class="cart-section" id="carrito">
+            <div class="cart-header">
+                <div>
+                    <span class="hero-tag">TU PEDIDO</span>
+                    <h2>Carrito de compras</h2>
+                </div>
+
+                <button
+                    type="button"
+                    id="clear-cart"
+                    class="clear-cart-button"
+                    hidden
+                >
+                    Vaciar carrito
+                </button>
+            </div>
+
+            <div id="cart-items" aria-live="polite" aria-atomic="false">
+                <p class="empty-cart">
+                    Tu carrito está vacío. ¡Agrega algo delicioso!
+                </p>
+            </div>
+
+            <div class="cart-summary">
+                <div class="total-row">
+                    <span>Total de productos</span>
+                    <strong id="cart-total">$0</strong>
+                </div>
+            </div>
+
+            <!-- DATOS DEL CLIENTE -->
+            <form id="checkout-form" class="checkout-form">
+
+                <h3>Datos para tu pedido</h3>
+
+                <div class="form-group">
+                    <label for="customer-name">Nombre completo</label>
+                    <input
+                        type="text"
+                        id="customer-name"
+                        name="customer-name"
+                        placeholder="Escribe tu nombre"
+                        maxlength="80"
+                        autocomplete="name"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="customer-phone">Teléfono de contacto</label>
+                    <input
+                        type="tel"
+                        id="customer-phone"
+                        name="customer-phone"
+                        placeholder="Ej. 3001234567"
+                        inputmode="numeric"
+                        autocomplete="tel"
+                        pattern="[0-9]{10}"
+                        maxlength="10"
+                        title="Escribe un número colombiano de 10 dígitos"
+                        required
+                    >
+                    <small>Escribe los 10 dígitos de tu número de celular.</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="order-type">¿Cómo deseas recibir tu pedido?</label>
+                    <select id="order-type" name="order-type" required>
+                        <option value="">Selecciona una opción</option>
+                        <option value="domicilio">Domicilio</option>
+                        <option value="recoger">Recoger en el restaurante</option>
+                    </select>
+                </div>
+
+                <div class="form-group" id="address-group" hidden>
+                    <label for="customer-address">Dirección de entrega</label>
+                    <textarea
+                        id="customer-address"
+                        name="customer-address"
+                        placeholder="Escribe tu dirección, barrio y referencias"
+                        maxlength="250"
+                        autocomplete="street-address"
+                        rows="3"
+                    ></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="order-notes">Observaciones (opcional)</label>
+                    <textarea
+                        id="order-notes"
+                        name="order-notes"
+                        placeholder="Instrucciones adicionales para tu pedido"
+                        maxlength="300"
+                        rows="3"
+                    ></textarea>
+                </div>
+
+                <p class="checkout-notice">
+                    Al continuar, se abrirá WhatsApp con los datos de tu pedido
+                    para que puedas revisarlos y enviarlos al restaurante.
+                </p>
+
+                <button
+                    type="submit"
+                    id="checkout-button"
+                    class="checkout-button"
+                    disabled
+                >
+                    Finalizar pedido por WhatsApp
+                </button>
+
+                <p
+                    id="checkout-status"
+                    class="checkout-status"
+                    role="status"
+                    aria-live="polite"
+                ></p>
+
+            </form>
+        </section>
+
+        <!-- HAMBURGUESAS -->
+        <section class="menu-section" id="hamburguesas">
+            <h2>Hamburguesas</h2>
+
+            <div class="product-grid">
+
+                <article class="product-card">
+                    <img
+                        src="images/hamburguesa-clasica.jpg"
+                        alt="Hamburguesa clásica"
+                        loading="lazy"
+                        width="600"
+                        height="400"
+                    >
+
+                    <div class="product-info">
+                        <h3>Hamburguesa Clásica</h3>
+                        <p>Carne de res, queso, lechuga y tomate.</p>
+                        <span class="price" data-price-for="hamburguesa-clasica"></span>
+
+                        <button
+                            type="button"
+                            class="add-to-cart"
+                            data-id="hamburguesa-clasica"
+                        >
+                            Agregar al carrito
+                        </button>
+                    </div>
+                </article>
+
+                <article class="product-card">
+                    <img
+                        src="images/hamburguesa-doble.jpg"
+                        alt="Hamburguesa doble"
+                        loading="lazy"
+                        width="600"
+                        height="400"
+                    >
+
+                    <div class="product-info">
+                        <h3>Doble Sabor</h3>
+                        <p>Doble carne, doble queso y salsa especial.</p>
+                        <span class="price" data-price-for="hamburguesa-doble"></span>
+
+                        <button
+                            type="button"
+                            class="add-to-cart"
+                            data-id="hamburguesa-doble"
+                        >
+                            Agregar al carrito
+                        </button>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- PIZZAS -->
+        <section class="menu-section" id="pizzas">
+            <h2>Pizzas</h2>
+
+            <div class="product-grid">
+
+                <article class="product-card">
+                    <img
+                        src="images/pizza-pepperoni.jpg"
+                        alt="Pizza de pepperoni"
+                        loading="lazy"
+                        width="600"
+                        height="400"
+                    >
+
+                    <div class="product-info">
+                        <h3>Pizza Pepperoni</h3>
+                        <p>Queso mozzarella y pepperoni.</p>
+                        <span class="price" data-price-for="pizza-pepperoni"></span>
+
+                        <button
+                            type="button"
+                            class="add-to-cart"
+                            data-id="pizza-pepperoni"
+                        >
+                            Agregar al carrito
+                        </button>
+                    </div>
+                </article>
+
+                <article class="product-card">
+                    <img
+                        src="images/pizza-especial.jpg"
+                        alt="Pizza especial"
+                        loading="lazy"
+                        width="600"
+                        height="400"
+                    >
+
+                    <div class="product-info">
+                        <h3>Pizza Especial</h3>
+                        <p>Queso, vegetales y salsa de la casa.</p>
+                        <span class="price" data-price-for="pizza-especial"></span>
+
+                        <button
+                            type="button"
+                            class="add-to-cart"
+                            data-id="pizza-especial"
+                        >
+                            Agregar al carrito
+                        </button>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- BEBIDAS -->
+        <section class="menu-section" id="bebidas">
+            <h2>Bebidas</h2>
+
+            <div class="product-grid">
+
+                <article class="product-card">
+                    <img
+                        src="images/limonada-natural.jpg"
+                        alt="Limonada natural"
+                        loading="lazy"
+                        width="600"
+                        height="400"
+                    >
+
+                    <div class="product-info">
+                        <h3>Limonada Natural</h3>
+                        <p>Refrescante limonada preparada al momento.</p>
+                        <span class="price" data-price-for="limonada-natural"></span>
+
+                        <button
+                            type="button"
+                            class="add-to-cart"
+                            data-id="limonada-natural"
+                        >
+                            Agregar al carrito
+                        </button>
+                    </div>
+                </article>
+
+                <article class="product-card">
+                    <img
+                        src="images/gaseosa.jpg"
+                        alt="Gaseosa fría"
+                        loading="lazy"
+                        width="600"
+                        height="400"
+                    >
+
+                    <div class="product-info">
+                        <h3>Gaseosa</h3>
+                        <p>Bebida fría para acompañar tu comida.</p>
+                        <span class="price" data-price-for="gaseosa"></span>
+
+                        <button
+                            type="button"
+                            class="add-to-cart"
+                            data-id="gaseosa"
+                        >
+                            Agregar al carrito
+                        </button>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>© 2026 Sabor Urbano - Menú Digital</p>
+        <p>Gracias por elegirnos.</p>
+    </footer>
+
+</body>
+</html>
